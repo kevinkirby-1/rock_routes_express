@@ -5,6 +5,10 @@ export interface AppUser extends Document {
   _id: ObjectId;
   email: string;
   password?: string;
+  name?: string;
+  given_name?: string;
+  family_name?: string;
+  picture?: string;
   googleId?: string;
   appleId?: string;
   createdAt: Date;
@@ -22,6 +26,22 @@ const UserSchema: Schema = new Schema(
     password: {
       type: String,
       select: false,
+    },
+    name: {
+      type: String,
+      trim: true,
+    },
+    given_name: {
+      type: String,
+      trim: true,
+    },
+    family_name: {
+      type: String,
+      trim: true,
+    },
+    picture: {
+      type: String,
+      trim: true,
     },
     googleId: {
       type: String,

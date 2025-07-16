@@ -4,10 +4,10 @@ import mongoose from "mongoose";
 
 // Create new climbing gym
 export const createGym = async (req: Request, res: Response) => {
-  const { name, img, address, description, isIndoors } = req.body;
+  const { name, img, address, description, isIndoor } = req.body;
 
   // Validation
-  if (!name || !isIndoors) {
+  if (!name) {
     return res
       .status(400)
       .json({ message: "Please include all required gym fields" });
@@ -26,7 +26,7 @@ export const createGym = async (req: Request, res: Response) => {
       img,
       address,
       description,
-      isIndoors,
+      isIndoor,
     });
 
     res.status(201).json(newGym);
@@ -53,13 +53,13 @@ export const getGyms = async (req: Request, res: Response) => {
     return res.status(401).json({ message: "User not authenticated" });
   }
 
-  // Add gym to db
+  // Fetch gyms from db
   try {
     const gyms = await ClimbingGym.find({ user: req.appUser._id });
 
     res.status(200).json(gyms);
   } catch (error: any) {
-    // Adding to db failed
+    // Fetching gyms failed
     console.error(`Error fetching gyms: ${error.message}`);
     res.status(500).json({ message: "Server error fetching gyms" });
   }

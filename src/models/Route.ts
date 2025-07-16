@@ -12,7 +12,7 @@ export interface ClimbingRouteI extends Document {
   gym: ObjectId;
   protection?: string;
   setter?: string;
-  dateSet?: string;
+  dateSet?: Date;
   holdType?: string;
   holdColor?: string;
   attributes?: string[];

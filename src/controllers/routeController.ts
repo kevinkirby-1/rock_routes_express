@@ -26,7 +26,7 @@ export const createRoute = async (req: Request, res: Response) => {
   } = req.body;
 
   // Basic validation
-  if (!name || !grade || !isProject || !gym) {
+  if (!name || !grade || !gym) {
     return res
       .status(400)
       .json({ message: "Please include all required route fields" });
@@ -316,6 +316,7 @@ export const markComplete = async (req: Request, res: Response) => {
   }
 
   try {
+    // Get route
     const route = await ClimbingRoute.findById(req.params.id);
 
     if (!route) {

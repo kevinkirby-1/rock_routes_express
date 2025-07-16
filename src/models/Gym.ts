@@ -7,7 +7,7 @@ export interface ClimbingGymI extends Document {
   img?: string;
   address?: string;
   description?: string;
-  isIndoors: string;
+  isIndoor: string;
   user: ObjectId | AppUser;
 }
 

@@ -8,6 +8,7 @@ import { protect } from "./middleware/authMiddleware"; // remove if never used
 import authRoutes from "./routes/authRoutes";
 import routeRoutes from "./routes/routeRoutes";
 import gymRoutes from "./routes/gymRoutes";
+import { getUserData } from "./controllers/authController";
 
 const app = express();
 
@@ -28,8 +29,8 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: {
-      // secure: process.env.NODE_ENV === 'production', // Set in production with HTTPS
-      // httpOnly: true, // Recommended for security
+      secure: true,
+      httpOnly: true, // Recommended for security
       maxAge: 1000 * 60 * 60 * 24,
     },
   })
@@ -44,6 +45,8 @@ app.use(passport.session());
 app.use("/rockroutes/auth", authRoutes);
 
 // Protected Routes
+// Get User Data
+app.get("/rockroutes/user", protect, getUserData);
 app.use("/rockroutes/routes", routeRoutes);
 app.use("/rockroutes/gyms", gymRoutes);
 
