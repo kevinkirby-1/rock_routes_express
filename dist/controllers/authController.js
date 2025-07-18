@@ -13,7 +13,7 @@ const generateToken = (id) => {
     if (!process.env.JWT_SECRET) {
         throw new Error("JWT_SECRET is not defined");
     }
-    return jsonwebtoken_1.default.sign({ id }, process.env.JWT_SECRET, { expiresIn: "1h" });
+    return jsonwebtoken_1.default.sign({ id }, process.env.JWT_SECRET, { expiresIn: "24h" });
 };
 const registerUser = async (req, res) => {
     const { given_name, family_name, name, email, password } = req.body;
