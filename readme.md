@@ -2,7 +2,7 @@
 
 ### A full-stack Progressive Web Application for rock climbers to track and visualize their progress.
 
-**Live Demo:** https://rock-routes-react.onrender.com
+<!-- **Live Demo:** https://rock-routes-react.onrender.com -->
 
 **Frontend Repository:** https://github.com/kevinkirby-1/rock_routes_react
 
